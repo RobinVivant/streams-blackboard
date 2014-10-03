@@ -27,7 +27,6 @@ $(function() {
   });
 
   $('body').on('click', '#create-new', function() {
-    var newPadId = Random.id();
-    Meteor.Router.to('pad', newPadId);
+    Router.go('/');
   });
 });
