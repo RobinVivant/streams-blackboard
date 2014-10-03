@@ -1,27 +1,25 @@
 var pad;
 var remoteUser;
 
-Meteor.startup(function() {
+Template.pad.rendered = function() {
+
   Deps.autorun(function() {
-    if(pad) {
+    if (pad) {
       pad.close();
       remoteUser.close();
     }
-
     var padId = Session.get('padId');
     pad = new Pad(padId);
     remoteUser = new RemoteUser(padId, pad);
   });
-});
 
-$(function() {
   $('body').on('click', '#wipe', function() {
     pad.wipe(true);
   });
 
   $('body').on('click', '#set-nickname', function() {
     var name = prompt('Enter your nickname');
-    if(name && name.trim() != '') {
+    if (name && name.trim() != '') {
       pad.setNickname(name);
     }
   });
@@ -29,4 +27,4 @@ $(function() {
   $('body').on('click', '#create-new', function() {
     Router.go('/');
   });
-});
+};
