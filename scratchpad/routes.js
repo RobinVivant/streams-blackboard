@@ -1,5 +1,5 @@
 Router.configure({
-    layoutTemplate: 'default_layout'
+    layoutTemplate: 'layout_default'
 });
 
 Router.map(function() {
@@ -11,7 +11,7 @@ Router.map(function() {
         }
     });
 
-    this.route('pad', {
+    this.route('board', {
         path: '/:id',
         onBeforeAction: function(pause) {
             Session.set('padId', this.params.id);

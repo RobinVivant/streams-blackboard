@@ -1,10 +1,9 @@
-if(!Meteor.isClient) return;
 
 this.RemoteUser = function RemoteUser(padId, pad) {
   var users = {};
 
   LineStream.on(padId + ':dragstart', function(nickname, position, color) {
-    var pointer = $($('#tmpl-nickname').text());
+    var pointer = $($('#tmpl-nickname').html());
     pointer.text(nickname);
     positionPointer(pointer, position);
 

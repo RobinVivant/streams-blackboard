@@ -1,8 +1,8 @@
 body {
 	margin: 0;
+	padding:0 !important;
 	overflow: hidden;
 }
-
 
 #header {
   position: fixed;
@@ -49,6 +49,7 @@ body {
 
 .nickname {
   position: absolute;
+  z-index:999;
   font-family: 'Arial';
   padding: 1px 4px 1px 4px;
   font-size: 13px;
