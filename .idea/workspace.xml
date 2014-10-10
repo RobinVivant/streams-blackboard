@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa8d92ad-8db8-411d-b47f-2784801b00bb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scratchpad/client/views/pages/board/board.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scratchpad/client/lib/Pad.js" afterPath="$PROJECT_DIR$/scratchpad/client/lib/Pad.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scratchpad/client/lib/RemoteUser.js" afterPath="$PROJECT_DIR$/scratchpad/client/lib/RemoteUser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scratchpad/client/views/pages/board/board.html" afterPath="$PROJECT_DIR$/scratchpad/client/views/pages/board/board.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scratchpad/client/views/pages/board/board.js" afterPath="$PROJECT_DIR$/scratchpad/client/views/pages/board/board.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scratchpad/routes.js" afterPath="$PROJECT_DIR$/scratchpad/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="streams-blackboard.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="board.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="board.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scratchpad/client/views/pages/board/board.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="445" max-vertical-offset="1245">
-              <caret line="50" column="63" selection-start-line="50" selection-start-column="63" selection-end-line="50" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.13829787" vertical-offset="370" max-vertical-offset="1335">
+              <caret line="29" column="43" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -66,17 +62,27 @@
         <entry file="file://$PROJECT_DIR$/scratchpad/client/views/pages/board/board.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
-              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Pad.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="blackboard.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scratchpad/client/blackboard.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="975">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pad.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scratchpad/client/lib/Pad.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49209931" vertical-offset="1222" max-vertical-offset="2205">
-              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+            <state vertical-scroll-proportion="-1.4074074" vertical-offset="1492" max-vertical-offset="2205">
+              <caret line="102" column="39" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -110,8 +116,8 @@
         <option value="$PROJECT_DIR$/scratchpad/client/views/pages/board/board.html" />
         <option value="$PROJECT_DIR$/scratchpad/client/lib/RemoteUser.js" />
         <option value="$PROJECT_DIR$/scratchpad/client/lib/Pad.js" />
-        <option value="$PROJECT_DIR$/scratchpad/client/views/pages/board/board.js" />
         <option value="$PROJECT_DIR$/scratchpad/client/views/pages/board/board.css" />
+        <option value="$PROJECT_DIR$/scratchpad/client/views/pages/board/board.js" />
       </list>
     </option>
   </component>
@@ -516,12 +522,12 @@
       <changelist id="aa8d92ad-8db8-411d-b47f-2784801b00bb" name="Default" comment="" />
       <created>1412922546211</created>
       <updated>1412922546211</updated>
-      <workItem from="1412922551632" duration="8115000" />
+      <workItem from="1412922551632" duration="10640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8115000" />
+    <option name="totallyTimeSpent" value="10640000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1600" height="873" extended-state="1" />
@@ -582,14 +588,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scratchpad/client/blackboard.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="975">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scratchpad/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
@@ -616,26 +614,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scratchpad/client/lib/Pad.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.4074074" vertical-offset="1492" max-vertical-offset="2205">
+          <caret line="102" column="39" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scratchpad/client/blackboard.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="975">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scratchpad/client/views/pages/board/board.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scratchpad/client/views/pages/board/board.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="445" max-vertical-offset="1245">
-          <caret line="50" column="63" selection-start-line="50" selection-start-column="63" selection-end-line="50" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scratchpad/client/lib/Pad.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49209931" vertical-offset="1222" max-vertical-offset="2205">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.13829787" vertical-offset="370" max-vertical-offset="1335">
+          <caret line="29" column="43" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="43" />
           <folding />
         </state>
       </provider>
