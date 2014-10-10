@@ -1,131 +1,141 @@
 this.Pad = function Pad(id) {
-  var canvas = $('canvas');
-  var ctx = canvas[0].getContext('2d');
-  var drawing = false;
-  var from;
-  var skipCount = 0;
-  var nickname;
-  var color;
+    var canvas = $('canvas');
+    var ctx = canvas[0].getContext('2d');
+    var drawing = false;
+    var from;
+    var skipCount = 0;
+    var nickname;
+    var color;
 
-  setNickname(localStorage.getItem('nickname') || Random.id());
+    setNickname(localStorage.getItem('nickname') || Random.id());
 
-  //send padid to the sever
-  LineStream.emit('pad', id);
+    //send padid to the sever
+    LineStream.emit('pad', id);
 
 
-  var pad = canvas.attr({
-    width: $(window).width(),
-    height: $(window).height()
-  }).hammer();
+    var pad = canvas.attr({
+        width: $(window).width(),
+        height: $(window).height()
+    }).hammer();
 
-  pad.on('dragstart', onDragStart);
-  pad.on('dragend', onDragEnd);
-  pad.on('drag', onDrag);
+    pad.on('dragstart', onDragStart);
+    pad.on('dragend', onDragEnd);
+    pad.on('drag', onDrag);
 
-  function onDrag(event) {
-    if (drawing) {
-      var to = getPosition(event);
-      drawLine(from, to, color);
-      LineStream.emit(id + ':drag', nickname, to);
-      from = to;
-      skipCount = 0;
+    function onDrag(event) {
+        if (drawing) {
+            var to = getPosition(event);
+            drawLine(from, to, color);
+            LineStream.emit(id + ':drag', nickname, to);
+            from = to;
+            skipCount = 0;
+        }
     }
-  }
 
-  function onDragStart(event) {
-    drawing = true;
-    from = getPosition(event);
-    LineStream.emit(id + ':dragstart', nickname, from, color);
-  }
+    function onDragStart(event) {
+        drawing = true;
+        from = getPosition(event);
+        LineStream.emit(id + ':dragstart', nickname, from, color);
+    }
 
-  function onDragEnd() {
-    drawing = false;
-    LineStream.emit(id + ':dragend', nickname);
-  }
+    function onDragEnd() {
+        drawing = false;
+        LineStream.emit(id + ':dragend', nickname);
+    }
 
-  function getPosition(event) {
-    return {
-      x: parseInt(event.gesture.center.pageX),
-      y: parseInt(event.gesture.center.pageY)
+    function getPosition(event) {
+        return {
+            x: parseInt(event.gesture.center.pageX),
+            y: parseInt(event.gesture.center.pageY)
+        };
+    }
+
+    function drawLine(from, to, color) {
+        ctx.strokeStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(from.x, from.y);
+        ctx.lineTo(to.x, to.y);
+        ctx.closePath();
+        ctx.stroke();
+    }
+
+    function setNickname(name) {
+        nickname = name;
+        $('#show-nickname b').text(nickname);
+        localStorage.setItem('nickname', nickname);
+
+        color = localStorage.getItem('color-' + nickname);
+        if (!color) {
+            color = getRandomColor();
+            localStorage.setItem('color-' + nickname, color);
+        }
+    }
+
+    function wipe(emitAlso) {
+        ctx.fillRect(0, 0, canvas.width(), canvas.height());
+        if (emitAlso) {
+            LineStream.emit(id + ':wipe', nickname);
+        }
+    }
+
+    function drawBG(){
+        ctx.strokeStyle = color;
+        ctx.fillStyle = '#000000';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 3;
+
+        ctx.fillRect(0, 0, canvas.width(), canvas.height());
+    }
+
+    function setColor(c){
+        color = c;
+        localStorage.setItem('color-' + nickname, color);
+    }
+
+    drawBG();
+
+
+    // Stop iOS from doing the bounce thing with the screen
+    document.ontouchmove = function(event) {
+        event.preventDefault();
+    }
+
+    //Run function when browser resizes
+    $(window).resize(respondCanvas);
+
+    function respondCanvas() {
+        var savedScreen = ctx.getImageData(0, 0, canvas.attr('width'), canvas.attr('height'));
+        var oldwidth = canvas.attr('width');
+        var oldheight = canvas.attr('height');
+
+        canvas.attr('width', $(window).width()); //max width
+        canvas.attr('height', $(window).height()); //max height
+
+        drawBG();
+
+        ctx.putImageData(savedScreen, 0, 0, 0, 0, $(window).width(), $(window).height());
+
+    }
+
+    //expose API
+    this.drawLine = drawLine;
+    this.wipe = wipe;
+    this.setNickname = setNickname;
+    this.setColor = setColor;
+    this.close = function() {
+        pad.off('dragstart', onDragStart);
+        pad.off('dragend', onDragEnd);
+        pad.off('drag', onDrag);
     };
-  }
-
-  function drawLine(from, to, color) {
-    ctx.strokeStyle = color;
-    ctx.beginPath();
-    ctx.moveTo(from.x, from.y);
-    ctx.lineTo(to.x, to.y);
-    ctx.closePath();
-    ctx.stroke();
-  }
-
-  function setNickname(name) {
-    nickname = name;
-    $('#show-nickname b').text(nickname);
-    localStorage.setItem('nickname', nickname);
-
-    color = localStorage.getItem('color-' + nickname);
-    if (!color) {
-      color = getRandomColor();
-      localStorage.setItem('color-' + nickname, color);
-    }
-  }
-
-  function wipe(emitAlso) {
-    ctx.fillRect(0, 0, canvas.width(), canvas.height());
-    if (emitAlso) {
-      LineStream.emit(id + ':wipe', nickname);
-    }
-  }
-
-  ctx.strokeStyle = color;
-  ctx.fillStyle = '#000000';
-  ctx.lineCap = 'round';
-  ctx.lineWidth = 3;
-
-  ctx.fillRect(0, 0, canvas.width(), canvas.height());
-
-  // Stop iOS from doing the bounce thing with the screen
-  document.ontouchmove = function(event) {
-    event.preventDefault();
-  }
-
-  //Run function when browser resizes
-  $(window).resize(respondCanvas);
-
-  function respondCanvas() {
-    console.log("caca");
-    var savedScreen = ctx.getImageData(0, 0, canvas.attr('width'), canvas.attr('height'));
-    var oldwidth = canvas.attr('width');
-    var oldheight = canvas.attr('height');
-    console.log(oldwidth);
-    console.log(oldheight);
-    
-    canvas.attr('width', $(window).width()); //max width
-    canvas.attr('height', $(window).height()); //max height
-    ctx.drawImage(savedScreen, 0, 0, oldwidth, oldheight, $(window).width(), $(window).height());
-
-    //Call a function to redraw other content (texts, images etc)
-  }
-
-  //expose API
-  this.drawLine = drawLine;
-  this.wipe = wipe;
-  this.setNickname = setNickname;
-  this.close = function() {
-    pad.off('dragstart', onDragStart);
-    pad.off('dragend', onDragEnd);
-    pad.off('drag', onDrag);
-  };
 }
 
 
-function getRandomColor() {
-  var letters = '0123456789ABCDEF'.split('');
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.round(Math.random() * 15)];
-  }
-  return color;
+getRandomColor = function() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.round(Math.random() * 15)];
+    }
+    return color;
 }
 

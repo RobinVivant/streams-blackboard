@@ -1,0 +1,18 @@
+
+.color-fragment{
+    border: 1px solid black;
+    background:red;
+    width:100%;
+    height: 50px;
+    float:left;
+}
+
+#colorPicker{
+    position: fixed;
+    left:0;
+    width: 50px;
+    height: 100%;
+    background:black;
+}
+
+

@@ -6,7 +6,7 @@ Router.map(function() {
     this.route('home', {
         path: '/',
         onBeforeAction: function(pause) {
-            Router.go('pad', {id: Random.id()});
+            Router.go('board', {id: Random.id()});
             pause();
         }
     });
